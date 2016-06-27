@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Nemutaisama\\ZendLogger\\": "src/ZendLogger"
+            "ZendLogger\\": "src/ZendLogger"
         }
     }
 }
