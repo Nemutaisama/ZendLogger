@@ -44,6 +44,7 @@ From controller you can just use it.
 
 ```php
 class IndexController extends AbstractActionController {
+
     public function indexAction(){
         ...
         $this->debug('message', [context]);
@@ -67,11 +68,15 @@ After that usage is same as in controller.
 
 ```php
 namespace MyPackage;
+
 use ZendLogger\LoggerTrait;
 use Zend\EventManager\EventManagerAwareTrait;
+
 class MyModel {
+
     use LoggerTrait;
     use EventManagerAwareTrait;
+    
     public function logErrors(){
         ...
         $this->debug('message', [context]);
