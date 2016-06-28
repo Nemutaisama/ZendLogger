@@ -1,6 +1,6 @@
 #ZendLogger
 
-Integration of any PSR-3 logger to ZendFramework2 project.
+Integration of any PSR-3 logger to ZendFramework2 projects.
 This package allow you easily log errors through EventManager.
 
 
