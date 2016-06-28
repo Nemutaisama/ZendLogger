@@ -11,10 +11,14 @@ use Zend\MVC\Controller\AbstractController;
 class Notice extends AbstractPlugin
 {
 
-    public function __invoke($message)
+    public function __invoke($message, $context = [])
     {
+        $params = [
+            'message' => $message,
+            'context' => $context,
+        ];
         $this->getController()->getEventManager()->trigger(
-            'log.notice', $this->getController(), ['message' => $message]
+            'log.notice', $this->getController(), $params
         );
     }
 }

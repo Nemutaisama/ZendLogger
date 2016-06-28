@@ -11,10 +11,14 @@ use Zend\MVC\Controller\AbstractController;
 class Critical extends AbstractPlugin
 {
 
-    public function __invoke($message)
+    public function __invoke($message, $context = [])
     {
+        $params = [
+            'message' => $message,
+            'context' => $context,
+        ];
         $this->getController()->getEventManager()->trigger(
-            'log.critical', $this->getController(), ['message' => $message]
+            'log.critical', $this->getController(), $params
         );
     }
 }

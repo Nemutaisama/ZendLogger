@@ -11,10 +11,14 @@ use Zend\MVC\Controller\AbstractController;
 class Debug extends AbstractPlugin
 {
 
-    public function __invoke($message)
+    public function __invoke($message, $context = [])
     {
+        $params = [
+            'message' => $message,
+            'context' => $context,
+        ];
         $this->getController()->getEventManager()->trigger(
-            'log.debug', $this->getController(), ['message' => $message]
+            'log.debug', $this->getController(), $params
         );
     }
 }

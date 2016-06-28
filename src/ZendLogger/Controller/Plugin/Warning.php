@@ -11,10 +11,14 @@ use Zend\MVC\Controller\AbstractController;
 class Warning extends AbstractPlugin
 {
 
-    public function __invoke($message)
+    public function __invoke($message, $context = [])
     {
+        $params = [
+            'message' => $message,
+            'context' => $context,
+        ];
         $this->getController()->getEventManager()->trigger(
-            'log.warning', $this->getController(), ['message' => $message]
+            'log.warning', $this->getController(), $params
         );
     }
 }

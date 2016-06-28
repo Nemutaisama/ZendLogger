@@ -11,10 +11,14 @@ use Zend\MVC\Controller\AbstractController;
 class Emergency extends AbstractPlugin
 {
 
-    public function __invoke($message)
+    public function __invoke($message, $context = [])
     {
+        $params = [
+            'message' => $message,
+            'context' => $context,
+        ];
         $this->getController()->getEventManager()->trigger(
-            'log.emergency', $this->getController(), ['message' => $message]
+            'log.emergency', $this->getController(), $params
         );
     }
 }

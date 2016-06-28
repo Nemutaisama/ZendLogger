@@ -152,10 +152,14 @@ class ZendLogger
     private function logMessage(EventInterface $e, $level = null)
     {
         $message = $e->getParam('message');
+        $context = $e->getParam('context');
         $class = get_class($e->getTarget());
         if (null === $level) {
             $level = LogLevel::INFO;
         }
-        $this->logger->log($level, $message, ['class' => $class]);
+        if (!isset($context['class'])) {
+            $context['class'] = $class;
+        }
+        $this->logger->log($level, $message, $context);
     }
 }
